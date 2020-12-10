@@ -1,18 +1,38 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1
+      :style="{'color': color}"
+    >Counter: {{ counter }}</h1>
+    <button @click="increase">+</button>
+    <button @click="decrease">-</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return {
+      counter: 0
+    }
+  },
+  computed: {
+    color(){
+      if (this.counter < 0) {
+        return 'red'
+      } else {
+        return 'green'
+      }
+    }
+  },
+  methods: {
+    increase(){
+      this.counter++;
+    },
+    decrease(){
+      this.counter--;
+    }
+  },
 }
 </script>
